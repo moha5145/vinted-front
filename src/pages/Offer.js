@@ -16,7 +16,7 @@ const Offer = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
   return (
     <section>
       {isLoading ? (

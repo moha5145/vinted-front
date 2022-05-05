@@ -27,7 +27,7 @@ const Header = ({ token, setToken }) => {
                   se deconnecter
                 </Link>
 
-                <a href="" className="vendre">
+                <a href="#" className="vendre">
                   vends tes articles
                 </a>
               </div>
@@ -39,7 +39,7 @@ const Header = ({ token, setToken }) => {
 
                 <Link to="/signup">s'inscrire</Link>
 
-                <a href="" className="vendre">
+                <a href="#" className="vendre">
                   vends tes articles
                 </a>
               </div>

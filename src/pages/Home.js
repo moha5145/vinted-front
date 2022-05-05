@@ -17,9 +17,6 @@ const Home = ({ data, setData, isLoading }) => {
       ) : (
         <div className="offers container">
           {data.offers.map((offer) => {
-            {
-              // console.log(offer);
-            }
             return (
               <Link to={`/offer/${offer._id}`} key={offer._id}>
                 <div className="offer">

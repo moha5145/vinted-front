@@ -1,8 +1,9 @@
 import "../components/header.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import Cookies from "js-cookie";
 
-const Header = () => {
+const Header = ({ isUserIsLoged, setisUserIsLoged }) => {
   return (
     <section className="header">
       <div className="container">
@@ -15,10 +16,37 @@ const Header = () => {
             <input type="text" placeholder="Rechercher des articles" />
           </div>
           <nav className="nav">
-            <a href="">s'inscrire | se connecter</a>
-            <a href="" className="vendre">
-              vends tes articles
-            </a>
+            {isUserIsLoged && (
+              <div>
+                <Link
+                  to="/login"
+                  onClick={() => {
+                    let isLoged = isUserIsLoged;
+                    isLoged = false;
+                    setisUserIsLoged(isLoged);
+                    Cookies.remove("token");
+                  }}
+                >
+                  se deconnecter
+                </Link>
+
+                <a href="" className="vendre">
+                  vends tes articles
+                </a>
+              </div>
+            )}
+
+            {!isUserIsLoged && (
+              <div>
+                <Link to="/login">se connecter</Link>
+
+                <Link to="/signup">s'inscrire</Link>
+
+                <a href="" className="vendre">
+                  vends tes articles
+                </a>
+              </div>
+            )}
           </nav>
         </div>
 

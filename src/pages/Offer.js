@@ -1,4 +1,4 @@
-import "../pages/offer.scss";
+import "../pages/css/offer.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

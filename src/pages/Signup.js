@@ -1,5 +1,4 @@
 import "../pages/css/signup.scss";
-
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -10,10 +9,7 @@ const Signup = ({ setisUserIsLoged, setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const [check, setCheck] = useState(false);
-  //   const [token, setToken] = useState("");
   const navigate = useNavigate();
-
-  //   useEffect(() => {}, []);
 
   const fetchData = async () => {
     try {
@@ -24,12 +20,10 @@ const Signup = ({ setisUserIsLoged, setToken }) => {
         check: check,
       };
       const response = await axios.post("https://vinted-clone-react.herokuapp.com/user/signup", user);
-      //   console.log(response.data.token);
       const token = response.data.token;
       if (token) {
         setToken(Cookies.set("token", token));
 
-        // setisUserIsLoged(true);
         navigate("/");
       }
     } catch (error) {

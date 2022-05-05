@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Login = ({ setisUserIsLoged, setToken }) => {
+const Login = ({ setToken }) => {
   const [email, setEmail] = useState();
   const [password, setPasword] = useState("");
   const navigate = useNavigate();
@@ -21,7 +21,6 @@ const Login = ({ setisUserIsLoged, setToken }) => {
 
     if (token) {
       setToken(Cookies.set("token", token));
-      // setisUserIsLoged(true);
       navigate("/");
     }
   };

@@ -12,7 +12,6 @@ import Cookies from "js-cookie";
 function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsloading] = useState(true);
-  const [isUserIsLoged, setisUserIsLoged] = useState(false);
   const [token, setToken] = useState(Cookies.get("token") || "");
 
   useEffect(() => {
@@ -30,7 +29,7 @@ function App() {
         <Header token={token} setToken={setToken} />
         <Routes>
           <Route path="/" element={<Home data={data} setData={setData} isLoading={isLoading} />}></Route>
-          <Route path="/offer/:id" element={<Offer data={data} />}></Route>
+          <Route path="/offer/:id" element={<Offer />}></Route>
           <Route path="/signup" element={<Signup setToken={setToken} />}></Route>
           <Route path="/login" element={<Login setToken={setToken} />}></Route>
         </Routes>

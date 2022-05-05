@@ -3,19 +3,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Offer = ({ data }) => {
+const Offer = () => {
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  // console.log(offer);
 
-  // console.log(filterOfers());
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offer/${id}`);
       setOffer(response.data);
       setIsLoading(false);
-      // console.log(response.data);
     };
 
     fetchData();
@@ -29,7 +26,6 @@ const Offer = ({ data }) => {
           <div className="album-container">
             <div className="col-img-container">
               <img src={offer.product_image.secure_url} alt="" />
-              {/* {console.log(offer.product_image.secure_url)} */}
             </div>
             <div className="row-img-container">
               {offer.product_pictures.map((img, index) => {

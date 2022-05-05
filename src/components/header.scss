@@ -1,5 +1,10 @@
 .header {
   height: 120px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+
   .container {
     .top-nav {
       height: 60px;
@@ -23,6 +28,7 @@
           border: none;
           background-color: none;
           background-color: #f5f6f7;
+          outline: none;
         }
       }
       .nav {

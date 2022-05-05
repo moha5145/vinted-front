@@ -18,7 +18,7 @@ const Offer = () => {
     fetchData();
   }, [id]);
   return (
-    <section>
+    <section className="offer-section">
       {isLoading ? (
         <p>Loading ...</p>
       ) : (

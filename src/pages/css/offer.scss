@@ -1,7 +1,11 @@
+.offer-section {
+  background-color: #ebedee;
+  height: 100vh;
+}
 .single-offer-container {
   display: flex;
-  width: 900px;
-  gap: 20px;
+  width: 1200px;
+  gap: 50px;
   .album-container {
     display: flex;
     gap: 10px;
@@ -9,7 +13,6 @@
     .col-img-container {
       width: 470px;
       height: 625px;
-      border: 1px solid blue;
       gap: 10px;
       img {
         width: 100%;
@@ -20,26 +23,17 @@
 
     .row-img-container {
       display: grid;
-      // flex-direction: column;
       grid-template-columns: 1fr 1fr;
-      // flex-direction: column;
-      // flex-wrap: wrap;
       height: 625px;
       width: 470px;
-      border: 1px solid red;
-      // max-width: 5px;
+      gap: 10px;
     }
 
     .offer {
       display: flex;
       gap: 10px;
-      // flex-wrap: wrap;
-      // flex-direction: column;
-      // margin-top: 10px;
       width: 235px;
       height: 315px;
-      border: 1px solid black;
-
       img {
         width: 100%;
         height: 100%;
@@ -51,6 +45,5 @@
   .single-offer-detail {
     display: flex;
     justify-content: flex-start;
-    // flex-direction: column;
   }
 }

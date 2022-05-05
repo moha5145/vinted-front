@@ -27,7 +27,7 @@ const Header = ({ token, setToken }) => {
                   se deconnecter
                 </Link>
 
-                <Link to="/" className="vendre">
+                <Link to="/signup" className="vendre">
                   vends tes articles
                 </Link>
               </div>
@@ -39,7 +39,7 @@ const Header = ({ token, setToken }) => {
 
                 <Link to="/signup">s'inscrire</Link>
 
-                <Link to="/" className="vendre">
+                <Link to="/signup" className="vendre">
                   vends tes articles
                 </Link>
               </div>
@@ -49,14 +49,14 @@ const Header = ({ token, setToken }) => {
 
         <div className="categorys">
           <nav>
-            <a href="#">Femme</a>
-            <a href="#">Home</a>
-            <a href="#">Enfants</a>
-            <a href="#">Maison</a>
-            <a href="#">Divertissement</a>
-            <a href="#">Animaux</a>
-            <a href="#">A propos</a>
-            <a href="#">Notre platforme</a>
+            <Link to="/">Femme</Link>
+            <Link to="/">Home</Link>
+            <Link to="/">Enfants</Link>
+            <Link to="/">Maison</Link>
+            <Link to="/">Divertissement</Link>
+            <Link to="/">Animaux</Link>
+            <Link to="/">A propos</Link>
+            <Link to="/">Notre platforme</Link>
           </nav>
         </div>
       </div>

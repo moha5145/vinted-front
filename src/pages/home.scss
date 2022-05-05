@@ -1,0 +1,58 @@
+.home {
+  .hero-container {
+    position: relative;
+    .float-div {
+      background-color: white;
+      width: 360px;
+      height: 300px;
+      padding: 20px;
+      position: absolute;
+      top: 150px;
+      left: 270px;
+      button {
+        width: 100%;
+        height: 44px;
+        background-color: #09b1ba;
+        color: white;
+        border: none;
+      }
+    }
+  }
+  .hero {
+    height: 576px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .offers {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    .offer {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      .offer-title {
+        width: 200px;
+        height: 100px;
+      }
+      .offer-img-container {
+        width: 200px;
+        height: 330px;
+        h4 {
+          margin-bottom: 50px;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .offer:hover {
+      opacity: 0.8;
+    }
+  }
+}

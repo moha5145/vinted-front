@@ -18,7 +18,7 @@ const Home = ({ data, setData, isLoading }) => {
         <div className="offers container">
           {data.offers.map((offer) => {
             {
-              console.log(offer);
+              // console.log(offer);
             }
             return (
               <Link to={`/offer/${offer._id}`} key={offer._id}>
@@ -32,9 +32,9 @@ const Home = ({ data, setData, isLoading }) => {
 
                   <span>{offer.product_price} €</span>
 
-                  {offer.product_details.map((detail) => {
-                    console.log(detail.MARQUE);
-                    return <span>{detail.MARQUE}</span>;
+                  {offer.product_details.map((detail, index) => {
+                    // console.log(detail.MARQUE);
+                    return <span key={index}>{detail.MARQUE}</span>;
                   })}
                   <span></span>
                 </div>

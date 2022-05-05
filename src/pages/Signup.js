@@ -5,7 +5,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
 
-const Signup = ({ setisUserIsLoged }) => {
+const Signup = ({ setisUserIsLoged, setToken }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
@@ -27,8 +27,9 @@ const Signup = ({ setisUserIsLoged }) => {
       //   console.log(response.data.token);
       const token = response.data.token;
       if (token) {
-        Cookies.set("token", token);
-        setisUserIsLoged(true);
+        setToken(Cookies.set("token", token));
+
+        // setisUserIsLoged(true);
         navigate("/");
       }
     } catch (error) {

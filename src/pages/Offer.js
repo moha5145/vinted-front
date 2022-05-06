@@ -38,7 +38,7 @@ const Offer = () => {
             </div>
           </div>
 
-          <div>
+          <div className="detail-container">
             <p>{offer.product_price} €</p>
             <div className="single-offer-detail">
               <div>

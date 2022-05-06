@@ -1,17 +1,18 @@
 .offer-section {
   background-color: #ebedee;
-  height: 100vh;
+  height: 85.5vh;
+  padding-top: 50px;
 }
 .single-offer-container {
+  width: 1350px;
   display: flex;
-  width: 1200px;
   gap: 50px;
   .album-container {
     display: flex;
     gap: 10px;
 
     .col-img-container {
-      width: 470px;
+      width: 350px;
       height: 625px;
       gap: 10px;
       img {
@@ -25,14 +26,14 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       height: 625px;
-      width: 470px;
+      width: 350px;
       gap: 10px;
     }
 
     .offer {
       display: flex;
       gap: 10px;
-      width: 235px;
+      width: 200px;
       height: 315px;
       img {
         width: 100%;
@@ -42,8 +43,14 @@
     }
   }
 
-  .single-offer-detail {
-    display: flex;
-    justify-content: flex-start;
+  .detail-container {
+    width: 500px;
+    padding-left: 20px;
+    margin-left: 50px;
+    background-color: white;
+    .single-offer-detail {
+      display: flex;
+      justify-content: flex-start;
+    }
   }
 }

@@ -30,7 +30,7 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
               ...props.style,
               height: "36px",
               display: "flex",
-              width: "70%",
+              width: "950%",
             }}
           >
             <div
@@ -53,7 +53,7 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
             </div>
           </div>
         )}
-        renderThumb={({ index, props, isDragged }) => (
+        renderThumb={({ index, props }) => (
           <div
             {...props}
             style={{
@@ -62,9 +62,9 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
               width: "15px",
               borderRadius: "50%",
               backgroundColor: "#2CB1BA",
-              // display: "flex",
-              // justifyContent: "center",
-              // alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               boxShadow: "0px 2px 6px #AAA",
             }}
           >
@@ -83,13 +83,6 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
             >
               {values[index].toFixed(1)}€
             </div>
-            {/* <div
-            // style={{
-            //   // height: "16px",
-            //   // width: "5px",
-            //   backgroundColor: isDragged ? "#548BF4" : "white",
-            // }}
-            /> */}
           </div>
         )}
       />

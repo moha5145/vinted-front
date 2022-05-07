@@ -4,7 +4,7 @@ import logo from "../assets/logo.svg";
 import Cookies from "js-cookie";
 import Test from "./Range";
 
-const Header = ({ token, setToken, setSearchInput, values, setValues }) => {
+const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setSort }) => {
   return (
     <section className="header">
       <div className="container">
@@ -66,7 +66,31 @@ const Header = ({ token, setToken, setSearchInput, values, setValues }) => {
             <Link to="/">A propos</Link>
             <Link to="/">Notre platforme</Link>
           </nav>
-          <Test values={values} setValues={setValues} />
+          <div className="filters-container">
+            <span>Trier par prix : </span>
+            {sort === "price-desc" ? (
+              <i
+                className="fa-solid fa-toggle-off switch"
+                onClick={() => {
+                  setSort("price-asc");
+                  // console.log(sort);
+                }}
+              ></i>
+            ) : (
+              <i
+                className="fa-solid fa-toggle-on switch"
+                onClick={() => {
+                  setSort("price-desc");
+                  // console.log(sort);
+                }}
+              ></i>
+            )}
+
+            <span>Prix entre :</span>
+            <div className="range">
+              <Test values={values} setValues={setValues} />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -15,12 +15,14 @@ function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [searchInput, setSearchInput] = useState("");
   const [values, setValues] = useState([0, 500]);
-  const [sort, setSort] = useState();
+  const [sort, setSort] = useState("price-desc");
 
   useEffect(() => {
     const fetchData = async () => {
       // if (values[0] > 0 || (values[1] < 500 && searchInput)) {
-      const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}`);
+      const response = await axios.get(
+        `https://lereacteur-vinted-api.herokuapp.com/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}`
+      );
       setData(response.data);
       setIsloading(false);
       // }
@@ -43,11 +45,11 @@ function App() {
     };
 
     fetchData();
-  }, [searchInput, values]);
+  }, [searchInput, values, sort]);
   return (
     <div className="App">
       <Router>
-        <Header token={token} setToken={setToken} setSearchInput={setSearchInput} values={values} setValues={setValues} />
+        <Header token={token} setToken={setToken} setSearchInput={setSearchInput} values={values} setValues={setValues} sort={sort} setSort={setSort} />
         <Routes>
           <Route path="/" element={<Home data={data} setData={setData} isLoading={isLoading} />}></Route>
           <Route path="/offer/:id" element={<Offer />}></Route>

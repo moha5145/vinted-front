@@ -45,12 +45,47 @@
 
   .detail-container {
     width: 500px;
-    padding-left: 20px;
+    padding: 25px;
     margin-left: 50px;
     background-color: white;
+
+    .price {
+      font-size: 24px;
+      font-family: bold;
+    }
     .single-offer-detail {
       display: flex;
+      border-bottom: 1px solid #ebedee;
       justify-content: flex-start;
+      gap: 20px;
+      margin-bottom: 40px;
+      .detail-title {
+        color: gray;
+      }
+    }
+    .avatar-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    .buy-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .buy-btn {
+        width: 100%;
+        background-color: #09aeb7;
+        border-style: none;
+        color: white;
+        margin-top: 20px;
+        height: 50px;
+      }
     }
   }
 }

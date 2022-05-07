@@ -39,9 +39,9 @@ const Offer = () => {
           </div>
 
           <div className="detail-container">
-            <p>{offer.product_price} €</p>
+            <p className="price">{offer.product_price} €</p>
             <div className="single-offer-detail">
-              <div>
+              <div className="detail-title">
                 <p>MARQUE </p>
                 <p>TAILLE </p>
                 <p>ÉTAT </p>
@@ -56,6 +56,17 @@ const Offer = () => {
                 <p>{offer.product_details[3].COULEUR}</p>
                 <p>{offer.product_details[4].EMPLACEMENT}</p>
               </div>
+            </div>
+            {console.log(offer.owner.account)}
+            <div className="buy-container">
+              <h3>{offer.product_name}</h3>
+              <p>{offer.product_description}</p>
+              <div className="avatar-container">
+                <img src={offer.owner.account.avatar.secure_url} alt="" className="avatar" />
+                <span>{offer.owner.account.username}</span>
+              </div>
+
+              <button className="buy-btn">Acheter</button>
             </div>
           </div>
         </div>

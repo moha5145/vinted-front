@@ -2,8 +2,9 @@ import "../components/header.scss";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cookies from "js-cookie";
+import Test from "./Range";
 
-const Header = ({ token, setToken }) => {
+const Header = ({ token, setToken, setSearchInput, values, setValues }) => {
   return (
     <section className="header">
       <div className="container">
@@ -13,12 +14,19 @@ const Header = ({ token, setToken }) => {
           </Link>
           <div className="search-container">
             <i className="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Rechercher des articles" />
+            <input
+              type="text"
+              placeholder="Rechercher des articles"
+              onChange={(event) => {
+                setSearchInput(event.target.value);
+              }}
+            />
           </div>
           <nav className="nav">
             {token && (
               <div>
                 <Link
+                  className="logout"
                   to="/login"
                   onClick={() => {
                     setToken(Cookies.remove("token"));
@@ -58,6 +66,7 @@ const Header = ({ token, setToken }) => {
             <Link to="/">A propos</Link>
             <Link to="/">Notre platforme</Link>
           </nav>
+          <Test values={values} setValues={setValues} />
         </div>
       </div>
     </section>

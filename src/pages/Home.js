@@ -1,7 +1,7 @@
 import "../pages/css/home.scss";
 import { Link } from "react-router-dom";
 import hero from "../assets/jumbotron.jpg";
-const Home = ({ data, setData, isLoading }) => {
+const Home = ({ data, isLoading }) => {
   //   console.log(data.offers);
   return (
     <section className="home">

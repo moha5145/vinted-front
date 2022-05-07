@@ -1,7 +1,7 @@
 .header {
-  height: 120px;
-  // position: sticky;
-  // top: 0;
+  height: 190px;
+  position: sticky;
+  top: 0;
   background-color: white;
   z-index: 10;
 
@@ -33,6 +33,11 @@
         }
       }
       .nav {
+        .logout {
+          background-color: #c2175b;
+          color: white !important;
+          border-style: none;
+        }
         a {
           border: 1px solid #09aeb7;
           color: #09aeb7 !important;
@@ -50,6 +55,7 @@
     .categorys {
       nav {
         margin-right: 10px;
+        margin-bottom: 20px;
         display: flex;
         a {
           line-height: 60px;

@@ -7,21 +7,33 @@ import Cookies from "js-cookie";
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState();
   const [password, setPasword] = useState("");
+  const [errorMessage, setUserMessage] = useState();
   const navigate = useNavigate();
 
   const fetchData = async () => {
-    const user = {
-      email: email,
-      password: password,
-    };
-    const response = await axios.post("https://vinted-clone-react.herokuapp.com/user/login", user);
+    setUserMessage("");
+    try {
+      const user = {
+        email: email,
+        password: password,
+      };
+      const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/login", user);
 
-    // console.log(response.data);
-    const token = response.data.token;
-
-    if (token) {
-      setToken(Cookies.set("token", token));
-      navigate("/");
+      // console.log(response.data);
+      const token = response.data.token;
+      if (token) {
+        Cookies.set("token", token);
+        setToken(token);
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response.data.message === "User not found") {
+        setUserMessage("Utilisateur inconnue");
+      } else if (error.response.data.message === "Unauthorized") {
+        setUserMessage("Votre email ou mot de passe incorect");
+      } else {
+        console.log(error.response.data.message);
+      }
     }
   };
 
@@ -61,6 +73,8 @@ const Login = ({ setToken }) => {
             <span>Pas encore de compte ? Inscris-toi !</span>
           </Link>
         </form>
+
+        <p className="error-message">{errorMessage}</p>
       </div>
     </section>
   );

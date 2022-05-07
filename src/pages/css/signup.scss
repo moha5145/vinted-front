@@ -20,6 +20,15 @@
       // input:active {
       //   border-color: #fef2f4;
       // }
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        input {
+          margin-top: 18px;
+        }
+      }
       p,
       span {
         color: #c4c2c2;
@@ -31,6 +40,16 @@
         color: white;
         font-size: 20px;
         font-weight: bold;
+      }
+      .submit:hover {
+        opacity: 0.8;
+      }
+      .submit:active {
+        opacity: 0.7;
+      }
+
+      .error-message {
+        color: red;
       }
     }
   }

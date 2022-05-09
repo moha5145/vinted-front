@@ -24,7 +24,7 @@ const Offer = () => {
       ) : (
         <div className="single-offer-container container">
           <div className="album-container">
-            <div className="col-img-container">{offer.owner.account !== undefined && <img src={offer.product_image.secure_url} alt="" />}</div>
+            <div className="col-img-container">{offer.product_image && <img src={offer.product_image.secure_url} alt="" />}</div>
             <div className="row-img-container">
               {offer.product_pictures.map((img, index) => {
                 return (
@@ -60,7 +60,7 @@ const Offer = () => {
               <h3>{offer.product_name}</h3>
               <p>{offer.product_description}</p>
               <div className="avatar-container">
-                <img src={offer.owner.account.avatar.secure_url} alt="" className="avatar" />
+                {offer.owner.account.avatar && <img src={offer.owner.account.avatar.secure_url} alt="" className="avatar" />}
                 <span>{offer.owner.account.username}</span>
               </div>
 

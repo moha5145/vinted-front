@@ -8,6 +8,7 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Cookies from "js-cookie";
+import Publish from "./pages/Publish";
 
 function App() {
   const [data, setData] = useState([]);
@@ -25,23 +26,6 @@ function App() {
       );
       setData(response.data);
       setIsloading(false);
-      // }
-      // else if (values[0] > 0 || values[1] < 500) {
-      //   console.log(values);
-      //   const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?priceMin=${values[0]}&priceMax=${values[1]}`);
-      //   setData(response.data);
-
-      //   setIsloading(false);
-      //   console.log(response.data);
-      // } else if (searchInput) {
-      //   const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?title=${searchInput}`);
-      //   setData(response.data);
-      //   setIsloading(false);
-      // } else {
-      //   const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers`);
-      //   setData(response.data);
-      //   setIsloading(false);
-      // }
     };
 
     fetchData();
@@ -55,6 +39,7 @@ function App() {
           <Route path="/offer/:id" element={<Offer />}></Route>
           <Route path="/signup" element={<Signup setToken={setToken} />}></Route>
           <Route path="/login" element={<Login setToken={setToken} />}></Route>
+          <Route path="/publish" element={<Publish token={token} />} />
         </Routes>
       </Router>
     </div>

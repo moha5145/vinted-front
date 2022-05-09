@@ -1,0 +1,131 @@
+.publish {
+  background-color: #ebedee;
+  //   height: 100vh;
+  .container {
+    h2 {
+      font-size: 24px;
+      line-height: 24px;
+      padding: 20px 0;
+    }
+
+    form {
+      .drop-zone {
+        height: 250px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        padding: 15px;
+        .img-input {
+          border-color: #2cb1ba !important;
+          border-style: none !important;
+        }
+      }
+
+      .title-and-description {
+        height: 220px;
+        background-color: white;
+        margin-bottom: 16px;
+        padding: 15px;
+        .title-container {
+          border-bottom: 1px solid #ecedef;
+          height: 73px;
+          display: flex;
+          padding-bottom: 30px;
+          span {
+            flex: 1;
+          }
+          input {
+            flex: 1;
+            border-style: none;
+            border-bottom: 1px solid #ebedee;
+            outline: none;
+          }
+        }
+
+        .description {
+          display: flex;
+          margin-top: 20px;
+          span {
+            flex: 1;
+          }
+          textarea {
+            flex: 1;
+            height: 100px;
+            border: none;
+            border-bottom: 1px solid #ebedee;
+            outline: none;
+          }
+        }
+      }
+
+      .product-detail {
+        height: 360px;
+        background-color: white;
+        margin-bottom: 16px;
+
+        .input-container {
+          padding: 15px;
+          height: 73px;
+          border-bottom: 1px solid #ebedee;
+          display: flex;
+
+          padding-bottom: 30px;
+          span {
+            flex: 1;
+          }
+          input {
+            flex: 1;
+            height: 40px;
+            border: none;
+            border-bottom: 1px solid #ebedee;
+            outline: none;
+          }
+        }
+      }
+
+      .price {
+        background-color: white;
+        height: 129px;
+        display: flex;
+        padding: 15px;
+
+        span {
+          flex: 1;
+        }
+        .input-container {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          input {
+            border: none;
+            border-bottom: 1px solid #ebedee;
+            outline: none;
+          }
+          .checkbox-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            // height: 75px;
+          }
+        }
+      }
+
+      .submit-container {
+        display: flex;
+        justify-content: flex-end;
+        .submit-btn {
+          background-color: #0ab1ba;
+          border: none;
+          color: white;
+          border-radius: 5px;
+          padding: 12px;
+          font-size: 16px;
+          margin-top: 100px;
+        }
+      }
+    }
+  }
+}

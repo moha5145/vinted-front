@@ -1,0 +1,212 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./css/publish.scss";
+
+const Publish = ({ token }) => {
+  const [picture, setPicture] = useState();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const [condition, setCondition] = useState("");
+  const [city, setCity] = useState("");
+  const [price, setPrice] = useState("");
+  const [exchange, setExchange] = useState(false);
+  // const [isLoading, setIsloading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const fetchData = async () => {
+    // setIsloading(true);
+    //   pictur: picture,
+    // const data = {
+    //   title: title,
+    //   description: description,
+    //   brand: brand,
+    //   size: size,
+    //   color: color,
+    //   condition: condition,
+    //   city: city,
+    //   price: price,
+    //   exchange: exchange,
+    // };
+    const formData = new FormData();
+    formData.append("picture", picture);
+
+    console.log(formData);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("brand", brand);
+    formData.append("size", size);
+    formData.append("color", color);
+    formData.append("condition", condition);
+    formData.append("city", city);
+    formData.append("price", price);
+    formData.append("price", price);
+
+    // formData.append("price", price);
+    // formData.append("color", color);
+
+    const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    console.log(response.data);
+    // setIsloading(false);
+    navigate(`/offer/${response.data._id}`);
+  };
+
+  const submitPublish = (event) => {
+    event.preventDefault();
+
+    fetchData();
+    // console.log(itemData);
+  };
+  return (
+    <section className="publish">
+      <div className="container">
+        <p>{title}</p>
+        <h2>Vends ton article</h2>
+        <form
+          className="img-input"
+          onSubmit={(event) => {
+            submitPublish(event);
+          }}
+        >
+          <section className="drop-zone">
+            <input
+              type="file"
+              onChange={(event) => {
+                setPicture(event.target.files[0]);
+              }}
+            />
+          </section>
+
+          <section className="title-and-description">
+            <div className="title-container">
+              <span>Title</span>
+              <input
+                type="text"
+                value={title}
+                placeholder="ex: Chemise Sézane verte"
+                onChange={(event) => {
+                  setTitle(event.target.value);
+                }}
+              />
+            </div>
+            <div className="description">
+              <span>Décris ton article</span>
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="ex: porté quelquefois, taille correctement "
+                value={description}
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                }}
+              ></textarea>
+            </div>
+          </section>
+
+          <section className="product-detail">
+            <div className="input-container">
+              <span>Marque</span>
+              <input
+                type="text"
+                value={brand}
+                placeholder="ex: Zara"
+                onChange={(event) => {
+                  setBrand(event.target.value);
+                }}
+              />
+            </div>
+
+            <div className="input-container">
+              <span>Taille</span>
+              <input
+                type="text"
+                value={size}
+                placeholder="ex: L / 40 / 12"
+                onChange={(event) => {
+                  setSize(event.target.value);
+                }}
+              />
+            </div>
+
+            <div className="input-container">
+              <span>Couleur</span>
+              <input
+                type="text"
+                placeholder="ex: Fushia"
+                value={color}
+                onChange={(event) => {
+                  setColor(event.target.value);
+                }}
+              />
+            </div>
+
+            <div className="input-container">
+              <span>Etat</span>
+              <input
+                type="text"
+                placeholder="Neuf avec étiquette"
+                value={condition}
+                onChange={(event) => {
+                  setCondition(event.target.value);
+                }}
+              />
+            </div>
+
+            <div className="input-container">
+              <span>Lieux</span>
+              <input
+                type="text"
+                placeholder="ex: Paris"
+                value={city}
+                onChange={(event) => {
+                  setCity(event.target.value);
+                }}
+              />
+            </div>
+          </section>
+
+          <section className="price">
+            <span>Price</span>
+            <div className="input-container">
+              <input
+                type="text"
+                placeholder="0,00 €"
+                value={price}
+                onChange={(event) => {
+                  setPrice(event.target.value);
+                }}
+              />
+              <div className="checkbox-container">
+                <input
+                  type="checkbox"
+                  value={exchange}
+                  onChange={(event) => {
+                    setExchange(event.target.checked);
+                  }}
+                />
+                <span>Je suis intéressé(e) par les échanges</span>
+              </div>
+            </div>
+          </section>
+
+          <div className="submit-container">
+            <input type="submit" className="submit-btn" />
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default Publish;

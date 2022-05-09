@@ -22,7 +22,7 @@ const Home = ({ data, isLoading }) => {
                 <div className="offer">
                   <div className="offer-title">
                     {/* {console.log(offer.owner.account.avatar)} */}
-                    {offer.owner.account.avatar !== undefined && <img src={offer.owner.account.avatar.url} className="avatar"></img>}
+                    {offer.owner.account.avatar !== undefined && <img src={offer.owner.account.avatar.url} alt="" className="avatar"></img>}
 
                     <p>{offer.product_name}</p>
                   </div>

@@ -19,13 +19,11 @@ const Login = ({ setToken }) => {
         password: password,
       };
       const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/login", user);
-
-      // console.log(response.data);
       const token = response.data.token;
       if (token) {
         Cookies.set("token", token);
         setToken(token);
-        navigate("/");
+        navigate("/publish");
       }
     } catch (error) {
       if (error.response.data.message === "User not found") {

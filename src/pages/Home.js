@@ -2,7 +2,6 @@ import "../pages/css/home.scss";
 import { Link } from "react-router-dom";
 import hero from "../assets/jumbotron.jpg";
 const Home = ({ data, isLoading }) => {
-  //   console.log(data.offers);
   return (
     <section className="home">
       <div className="hero-container">
@@ -21,7 +20,6 @@ const Home = ({ data, isLoading }) => {
               <Link to={`/offer/${offer._id}`} key={offer._id}>
                 <div className="offer">
                   <div className="offer-title">
-                    {/* {console.log(offer.owner.account.avatar)} */}
                     {offer.owner.account.avatar !== undefined && <img src={offer.owner.account.avatar.url} alt="" className="avatar"></img>}
 
                     <p>{offer.product_name}</p>
@@ -33,7 +31,6 @@ const Home = ({ data, isLoading }) => {
                   <span className="price">{offer.product_price} €</span>
 
                   {offer.product_details.map((detail, index) => {
-                    // console.log(detail.MARQUE);
                     return <span key={index}>{detail.MARQUE}</span>;
                   })}
                   <span></span>

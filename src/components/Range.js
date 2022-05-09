@@ -6,7 +6,6 @@ const MIN = 0;
 const MAX = 500;
 
 const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
-  // const [values, setValues] = useState([0, 1000]);
   return (
     <div
       style={{
@@ -21,7 +20,6 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
         min={MIN}
         max={MAX}
         rtl={rtl}
-        // onFinalChange: (values: number[]) => void;
         onChange={(values) => setValues(values)}
         renderTrack={({ props, children }) => (
           <div

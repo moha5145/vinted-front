@@ -1,7 +1,7 @@
+import "./css/publish.scss";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/publish.scss";
 
 const Publish = ({ token }) => {
   const [picture, setPicture] = useState();
@@ -14,7 +14,6 @@ const Publish = ({ token }) => {
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
-  // const [isLoading, setIsloading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -46,17 +45,12 @@ const Publish = ({ token }) => {
     formData.append("price", price);
     formData.append("price", price);
 
-    // formData.append("price", price);
-    // formData.append("color", color);
-
     const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(response.data);
-    // setIsloading(false);
     navigate(`/offer/${response.data._id}`);
   };
 
@@ -64,7 +58,6 @@ const Publish = ({ token }) => {
     event.preventDefault();
 
     fetchData();
-    // console.log(itemData);
   };
   return (
     <section className="publish">
@@ -72,18 +65,22 @@ const Publish = ({ token }) => {
         <p>{title}</p>
         <h2>Vends ton article</h2>
         <form
-          className="img-input"
           onSubmit={(event) => {
             submitPublish(event);
           }}
         >
           <section className="drop-zone">
-            <input
-              type="file"
-              onChange={(event) => {
-                setPicture(event.target.files[0]);
-              }}
-            />
+            <label for="inputTag" className="input-img-label">
+              + Ajoute une photo
+              <input
+                className="img-input"
+                id="inputTag"
+                type="file"
+                onChange={(event) => {
+                  setPicture(event.target.files[0]);
+                }}
+              />
+            </label>
           </section>
 
           <section className="title-and-description">
@@ -201,7 +198,7 @@ const Publish = ({ token }) => {
           </section>
 
           <div className="submit-container">
-            <input type="submit" className="submit-btn" />
+            <input type="submit" className="submit-btn" value="Ajouter" />
           </div>
         </form>
       </div>

@@ -17,9 +17,19 @@
         justify-content: center;
         margin-bottom: 16px;
         padding: 15px;
-        .img-input {
-          border-color: #2cb1ba !important;
-          border-style: none !important;
+        border: 1px solid rgb(202, 200, 200);
+        .input-img-label {
+          cursor: pointer;
+          border: 1px solid #2cb1ba;
+          color: #0ab1ba;
+          font-size: 20px;
+          line-height: 45px;
+          height: 45px;
+          padding: 0 20px;
+          font-weight: bold;
+          .img-input {
+            display: none;
+          }
         }
       }
 
@@ -28,6 +38,8 @@
         background-color: white;
         margin-bottom: 16px;
         padding: 15px;
+        border: 1px solid rgb(202, 200, 200);
+
         .title-container {
           border-bottom: 1px solid #ecedef;
           height: 73px;
@@ -64,6 +76,7 @@
         height: 360px;
         background-color: white;
         margin-bottom: 16px;
+        border: 1px solid rgb(202, 200, 200);
 
         .input-container {
           padding: 15px;
@@ -90,6 +103,7 @@
         height: 129px;
         display: flex;
         padding: 15px;
+        border: 1px solid rgb(202, 200, 200);
 
         span {
           flex: 1;
@@ -107,8 +121,11 @@
           .checkbox-container {
             display: flex;
             justify-content: space-around;
-            align-items: stretch;
+            align-items: center;
             // height: 75px;
+            input {
+              margin-right: 20px;
+            }
           }
         }
       }
@@ -116,6 +133,7 @@
       .submit-container {
         display: flex;
         justify-content: flex-end;
+
         .submit-btn {
           background-color: #0ab1ba;
           border: none;
@@ -123,7 +141,7 @@
           border-radius: 5px;
           padding: 12px;
           font-size: 16px;
-          margin-top: 100px;
+          margin: 60px 0;
         }
       }
     }

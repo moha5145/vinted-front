@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
@@ -15,12 +15,11 @@ function App() {
   const [isLoading, setIsloading] = useState(true);
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [searchInput, setSearchInput] = useState("");
-  const [values, setValues] = useState([0, 500]);
+  const [values, setValues] = useState([0, 250]);
   const [sort, setSort] = useState("price-desc");
 
   useEffect(() => {
     const fetchData = async () => {
-      // if (values[0] > 0 || (values[1] < 500 && searchInput)) {
       const response = await axios.get(
         `https://lereacteur-vinted-api.herokuapp.com/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}`
       );

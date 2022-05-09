@@ -1,13 +1,11 @@
 import "../components/header.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cookies from "js-cookie";
 import Range from "./Range";
-import { useLocation } from "react-router-dom";
 
 const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setSort }) => {
   const location = useLocation();
-  console.log("use location", location.pathname);
   return (
     <section className="header">
       <div className="container">
@@ -50,9 +48,15 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
 
                 <Link to="/signup">s'inscrire</Link>
 
-                <Link to="/publish" className="vendre">
-                  vends tes articles
-                </Link>
+                {token ? (
+                  <Link to="/publish" className="vendre">
+                    vends tes articles
+                  </Link>
+                ) : (
+                  <Link to="/login" className="vendre">
+                    vends tes articles
+                  </Link>
+                )}
               </div>
             )}
           </nav>
@@ -77,7 +81,6 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
                   className="fa-solid fa-toggle-off switch"
                   onClick={() => {
                     setSort("price-asc");
-                    // console.log(sort);
                   }}
                 ></i>
               ) : (
@@ -85,7 +88,6 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
                   className="fa-solid fa-toggle-on switch"
                   onClick={() => {
                     setSort("price-desc");
-                    // console.log(sort);
                   }}
                 ></i>
               )}

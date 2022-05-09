@@ -21,13 +21,16 @@ const Home = ({ data, isLoading }) => {
               <Link to={`/offer/${offer._id}`} key={offer._id}>
                 <div className="offer">
                   <div className="offer-title">
-                    <h4>{offer.product_name}</h4>
+                    {/* {console.log(offer.owner.account.avatar)} */}
+                    {offer.owner.account.avatar !== undefined && <img src={offer.owner.account.avatar.url} className="avatar"></img>}
+
+                    <p>{offer.product_name}</p>
                   </div>
                   <div className="offer-img-container">
                     <img src={offer.product_image.url} alt="" />
                   </div>
 
-                  <span>{offer.product_price} €</span>
+                  <span className="price">{offer.product_price} €</span>
 
                   {offer.product_details.map((detail, index) => {
                     // console.log(detail.MARQUE);

@@ -24,9 +24,7 @@ const Offer = () => {
       ) : (
         <div className="single-offer-container container">
           <div className="album-container">
-            <div className="col-img-container">
-              <img src={offer.product_image.secure_url} alt="" />
-            </div>
+            <div className="col-img-container">{offer.owner.account !== undefined && <img src={offer.product_image.secure_url} alt="" />}</div>
             <div className="row-img-container">
               {offer.product_pictures.map((img, index) => {
                 return (

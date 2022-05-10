@@ -129,7 +129,7 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
                     Previous Page
                   </button>
                 )}
-
+                <span>{switchPage}</span>
                 {data.count / switchPage > switchPage && (
                   <button
                     onClick={() => {

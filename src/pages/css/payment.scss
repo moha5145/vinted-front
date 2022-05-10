@@ -1,0 +1,44 @@
+.payment-page {
+  box-sizing: border-box;
+  .container-payment-page {
+    padding-top: 50px;
+    width: 600px;
+    background-color: white;
+    margin: 50px auto;
+    padding: 20px;
+
+    .payment-detail-container {
+      border-bottom: 1px solid #ebedee;
+      padding-bottom: 50px;
+      .payment-detail {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .total-container {
+    padding: 50px 0px;
+    border-bottom: 1px solid #ebedee;
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .card-container {
+    border-bottom: 1px solid #ebedee;
+    height: 100px;
+    padding-top: 20px;
+  }
+
+  .pay-btn {
+    width: 100%;
+    background-color: #00bb6a;
+    border: none;
+    color: white;
+    height: 44px;
+    border-radius: 5px;
+  }
+}

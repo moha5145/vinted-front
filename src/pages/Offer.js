@@ -1,7 +1,7 @@
 import "../pages/css/offer.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Offer = () => {
   const [offer, setOffer] = useState([]);
@@ -68,7 +68,9 @@ const Offer = () => {
                 <span>{offer.owner.account.username}</span>
               </div>
 
-              <button className="buy-btn">Acheter</button>
+              <Link to="/payment" state={{ title: "Toto", price: offer.product_price }}>
+                <button className="buy-btn">Acheter</button>
+              </Link>
             </div>
           </div>
         </div>

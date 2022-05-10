@@ -7,7 +7,7 @@ const Offer = () => {
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  // console.log(offer);
+
   useEffect(() => {
     const fetchData = async () => {
       // const response = await axios.get(`https://vinted-clone-back.herokuapp.com/offer/${id}`);
@@ -59,7 +59,7 @@ const Offer = () => {
                 <p>{offer.product_details[4].EMPLACEMENT}</p>
               </div>
             </div>
-            {/* {console.log(offer.owner.account)} */}
+
             <div className="buy-container">
               <h3>{offer.product_name}</h3>
               <p>{offer.product_description}</p>

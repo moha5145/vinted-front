@@ -20,19 +20,6 @@ const Publish = ({ token }) => {
 
   const fetchData = async () => {
     try {
-      // setIsloading(true);
-      //   pictur: picture,
-      // const data = {
-      //   title: title,
-      //   description: description,
-      //   brand: brand,
-      //   size: size,
-      //   color: color,
-      //   condition: condition,
-      //   city: city,
-      //   price: price,
-      //   exchange: exchange,
-      // };
       const formData = new FormData();
       formData.append("picture", picture);
 
@@ -74,7 +61,6 @@ const Publish = ({ token }) => {
   return token ? (
     <section className="publish">
       <div className="container">
-        <p>{title}</p>
         <h2>Vends ton article</h2>
         <form
           onSubmit={(event) => {

@@ -30,7 +30,6 @@ function App() {
         );
         setData(response.data);
         setIsloading(false);
-        console.log(switchPage);
       };
       fetchData();
     } catch (error) {

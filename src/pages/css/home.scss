@@ -31,11 +31,16 @@
     object-fit: cover;
   }
 
+  h3 {
+    color: #09b1ba;
+    margin-top: 20px;
+  }
   .offers {
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+
     .offer {
       cursor: pointer;
       display: flex;

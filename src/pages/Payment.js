@@ -12,9 +12,6 @@ const Payment = () => {
   const shiping = 0.8;
   const insurance = 0.4;
   const total = price + insurance + shiping;
-  // const totalHandler = () => {
-  //   return price + insurance + shiping;
-  // };
 
   return (
     <section className="payment-page">
@@ -33,7 +30,7 @@ const Payment = () => {
           </div>
 
           <div className="payment-detail">
-            <span>Frais de port</span>toFixed(2)
+            <span>Frais de port</span>
             <span>{shiping.toFixed(2)} €</span>
           </div>
         </div>
@@ -56,8 +53,6 @@ const Payment = () => {
             <CheckoutForm total={total} title={title} />
           </Elements>
         </div>
-
-        {/* <button className="pay-btn">Pay</button> */}
       </div>
     </section>
   );

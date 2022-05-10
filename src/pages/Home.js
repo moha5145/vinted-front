@@ -23,32 +23,38 @@ const Home = ({ data, isLoading, token }) => {
       {isLoading ? (
         <p>Loading ...</p>
       ) : (
-        <div className="offers container">
-          {data.offers &&
-            data.offers.map((offer) => {
-              return (
-                <Link to={`/offer/${offer._id}`} key={offer._id}>
-                  <div className="offer">
-                    <div className="offer-title">
-                      {offer.owner.account.avatar && <img src={offer.owner.account.avatar.url} alt="" className="avatar"></img>}
+        <>
+          <div className="container">
+            <h3>{data.count} items</h3>
+          </div>
 
-                      <p>{offer.product_name}</p>
+          <div className="offers container">
+            {data.offers &&
+              data.offers.map((offer) => {
+                return (
+                  <Link to={`/offer/${offer._id}`} key={offer._id}>
+                    <div className="offer">
+                      <div className="offer-title">
+                        {offer.owner.account.avatar && <img src={offer.owner.account.avatar.url} alt="" className="avatar"></img>}
+
+                        <p>{offer.product_name}</p>
+                      </div>
+                      <div className="offer-img-container">
+                        <img src={offer.product_image && offer.product_image.url} alt="" />
+                      </div>
+
+                      <span className="price">{offer.product_price} €</span>
+
+                      {offer.product_details.map((detail, index) => {
+                        return <span key={index}>{detail.MARQUE}</span>;
+                      })}
+                      <span></span>
                     </div>
-                    <div className="offer-img-container">
-                      <img src={offer.product_image && offer.product_image.url} alt="" />
-                    </div>
-
-                    <span className="price">{offer.product_price} €</span>
-
-                    {offer.product_details.map((detail, index) => {
-                      return <span key={index}>{detail.MARQUE}</span>;
-                    })}
-                    <span></span>
-                  </div>
-                </Link>
-              );
-            })}
-        </div>
+                  </Link>
+                );
+              })}
+          </div>
+        </>
       )}
     </section>
   );

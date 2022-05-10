@@ -66,7 +66,7 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
         <div className="categorys">
           <nav>
             <Link to="/">Femme</Link>
-            <Link to="/">Home</Link>
+            <Link to="/">Homme</Link>
             <Link to="/">Enfants</Link>
             <Link to="/">Maison</Link>
             <Link to="/">Divertissement</Link>
@@ -110,8 +110,7 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
                   {options.map((option, index) => {
                     return (
                       <option key={index} value={option.value}>
-                        {" "}
-                        {option.label}{" "}
+                        {option.label}
                       </option>
                     );
                   })}

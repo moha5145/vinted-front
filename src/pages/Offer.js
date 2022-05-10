@@ -7,10 +7,13 @@ const Offer = () => {
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-
+  // console.log(offer);
   useEffect(() => {
     const fetchData = async () => {
+      // const response = await axios.get(`https://vinted-clone-back.herokuapp.com/offer/${id}`);
       const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offer/${id}`);
+
+      console.log(response.data);
       setOffer(response.data);
       setIsLoading(false);
     };
@@ -26,13 +29,14 @@ const Offer = () => {
           <div className="album-container">
             <div className="col-img-container">{offer.product_image && <img src={offer.product_image.secure_url} alt="" />}</div>
             <div className="row-img-container">
-              {offer.product_pictures.map((img, index) => {
-                return (
-                  <div key={index} className="offer " style={{ height: "300px" }}>
-                    <img src={img.url} alt="" />
-                  </div>
-                );
-              })}
+              {offer.product_pictures &&
+                offer.product_pictures.map((img, index) => {
+                  return (
+                    <div key={index} className="offer " style={{ height: "300px" }}>
+                      <img src={img.url} alt="" />
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -55,7 +59,7 @@ const Offer = () => {
                 <p>{offer.product_details[4].EMPLACEMENT}</p>
               </div>
             </div>
-            {console.log(offer.owner.account)}
+            {/* {console.log(offer.owner.account)} */}
             <div className="buy-container">
               <h3>{offer.product_name}</h3>
               <p>{offer.product_description}</p>

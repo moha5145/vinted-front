@@ -22,7 +22,10 @@ const Signup = ({ setToken }) => {
         password: password,
         check: check,
       };
+
+      // const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/signup", user);
       const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/signup", user);
+
       const token = response.data.token;
       if (token) {
         Cookies.set("token", token);

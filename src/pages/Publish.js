@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -14,44 +14,56 @@ const Publish = ({ token }) => {
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
+  const [preview, setPreview] = useState();
 
   const navigate = useNavigate();
 
   const fetchData = async () => {
-    // setIsloading(true);
-    //   pictur: picture,
-    // const data = {
-    //   title: title,
-    //   description: description,
-    //   brand: brand,
-    //   size: size,
-    //   color: color,
-    //   condition: condition,
-    //   city: city,
-    //   price: price,
-    //   exchange: exchange,
-    // };
-    const formData = new FormData();
-    formData.append("picture", picture);
+    try {
+      // setIsloading(true);
+      //   pictur: picture,
+      // const data = {
+      //   title: title,
+      //   description: description,
+      //   brand: brand,
+      //   size: size,
+      //   color: color,
+      //   condition: condition,
+      //   city: city,
+      //   price: price,
+      //   exchange: exchange,
+      // };
+      const formData = new FormData();
+      formData.append("picture", picture);
 
-    console.log(formData);
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("brand", brand);
-    formData.append("size", size);
-    formData.append("color", color);
-    formData.append("condition", condition);
-    formData.append("city", city);
-    formData.append("price", price);
-    formData.append("price", price);
+      console.log(formData);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("brand", brand);
+      formData.append("size", size);
+      formData.append("color", color);
+      formData.append("condition", condition);
+      formData.append("city", city);
+      formData.append("price", price);
+      formData.append("price", price);
 
-    const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    navigate(`/offer/${response.data._id}`);
+      // const response = await axios.post("https://vinted-clone-back.herokuapp.com/offer/publish", formData, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // });
+
+      const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      navigate(`/offer/${response.data._id}`);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const submitPublish = (event) => {
@@ -59,7 +71,7 @@ const Publish = ({ token }) => {
 
     fetchData();
   };
-  return (
+  return token ? (
     <section className="publish">
       <div className="container">
         <p>{title}</p>
@@ -70,7 +82,7 @@ const Publish = ({ token }) => {
           }}
         >
           <section className="drop-zone">
-            <label for="inputTag" className="input-img-label">
+            <label className="input-img-label">
               + Ajoute une photo
               <input
                 className="img-input"
@@ -78,9 +90,11 @@ const Publish = ({ token }) => {
                 type="file"
                 onChange={(event) => {
                   setPicture(event.target.files[0]);
+                  setPreview(URL.createObjectURL(event.target.files[0]));
                 }}
               />
             </label>
+            <img src={preview} alt="" className="img-preview" />
           </section>
 
           <section className="title-and-description">
@@ -203,6 +217,8 @@ const Publish = ({ token }) => {
         </form>
       </div>
     </section>
+  ) : (
+    navigate("/login")
   );
 };
 

@@ -1,11 +1,13 @@
 // import { useState } from "react";
+import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
-const STEP = 1;
+const STEP = 5;
 const MIN = 0;
 const MAX = 500;
 
 const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
+  const [fakeValue, setFakeValue] = useState(values);
   return (
     <div
       style={{
@@ -15,12 +17,13 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
       }}
     >
       <Range
-        values={values}
+        values={fakeValue}
         step={STEP}
         min={MIN}
         max={MAX}
         rtl={rtl}
-        onChange={(values) => setValues(values)}
+        onChange={(fakeValue) => setFakeValue(fakeValue)}
+        onFinalChange={(values) => setValues(values)}
         renderTrack={({ props, children }) => (
           <div
             onMouseDown={props.onMouseDown}
@@ -29,7 +32,7 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
               ...props.style,
               height: "36px",
               display: "flex",
-              width: "950%",
+              width: "70%",
             }}
           >
             <div
@@ -39,7 +42,7 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
                 width: "100%",
                 borderRadius: "4px",
                 background: getTrackBackground({
-                  values,
+                  values: fakeValue,
                   colors: ["#ccc", "#2CB1BA", "#ccc"],
                   min: MIN,
                   max: MAX,
@@ -80,7 +83,7 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
                 backgroundColor: "#2CB1BA",
               }}
             >
-              {values[index].toFixed(1)}€
+              {fakeValue[index].toFixed(1)}€
             </div>
           </div>
         )}

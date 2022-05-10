@@ -5,9 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Login = ({ setToken }) => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
-  const [errorMessage, setUserMessage] = useState();
+  const [errorMessage, setUserMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,7 +18,10 @@ const Login = ({ setToken }) => {
         email: email,
         password: password,
       };
+
+      // const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/login", user);
       const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/login", user);
+
       const token = response.data.token;
       if (token) {
         Cookies.set("token", token);

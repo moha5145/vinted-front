@@ -55,7 +55,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<Home data={data} setData={setData} isLoading={isLoading} token={token} />}></Route>
-          <Route path="/offer/:id" element={<Offer />}></Route>
+          <Route path="/offer/:id" element={<Offer token={token} />}></Route>
           <Route path="/signup" element={<Signup setToken={setToken} />}></Route>
           <Route path="/login" element={<Login setToken={setToken} />}></Route>
           <Route path="/publish" element={<Publish token={token} />} />

@@ -4,8 +4,6 @@ import logo from "../assets/logo.svg";
 
 import Range from "./Range";
 import { useState } from "react";
-import Pagination from "./Pagination";
-import LimitParpage from "./LimitParPage";
 import FilterByPrice from "./FilterByPrice";
 import RightNav from "./RightNav";
 

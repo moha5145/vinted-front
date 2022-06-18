@@ -1,0 +1,18 @@
+.select-limit-container {
+  margin: 0 10px;
+  span {
+    margin-right: 10px;
+    color: #b5b7b9;
+  }
+  select {
+    padding: 5px;
+    background-color: #09aeb7;
+    outline: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  select:hover {
+    opacity: 0.8;
+  }
+}

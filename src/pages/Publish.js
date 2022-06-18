@@ -34,22 +34,22 @@ const Publish = ({ token }) => {
       formData.append("price", price);
       formData.append("price", price);
 
-      // const response = await axios.post("https://vinted-clone-back.herokuapp.com/offer/publish", formData, {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      // });
-
-      const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData, {
+      const response = await axios.post("https://vinted-clone-back.herokuapp.com/offer/publish", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         },
       });
+
+      // const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // });
       navigate(`/offer/${response.data._id}`);
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response);
     }
   };
 

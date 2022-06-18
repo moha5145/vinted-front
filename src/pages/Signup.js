@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import Input from "../components/Input";
 
 const Signup = ({ setToken }) => {
   const [userName, setUserName] = useState("");
@@ -23,8 +24,9 @@ const Signup = ({ setToken }) => {
         check: check,
       };
 
-      // const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/signup", user);
-      const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/signup", user);
+      // const response = await axios.post("http://localhost:4000/user/signup", user);
+      // const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/signup", user);
+      const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/signup", user);
 
       const token = response.data.token;
       if (token) {
@@ -33,10 +35,15 @@ const Signup = ({ setToken }) => {
         navigate("/");
       }
     } catch (error) {
-      if (error.response.data.message === "This email already has an account") {
+      if (error.response.data.error === "All fields are required") {
+        setErrorMessage("Veuillez remplir tous les champs");
+      }
+      if (error.response.data.error === "email already exist") {
+        setErrorMessage("Un compte avec ce mail mail exisit");
+      } else if (error.response.data.message === "This email already has an account") {
         setErrorMessage("Un compte avec ce mail mail exisit");
       } else {
-        console.log("catch", error);
+        console.log("catch", error.response);
       }
     }
   };
@@ -55,40 +62,14 @@ const Signup = ({ setToken }) => {
             handelSumit(event);
           }}
         >
-          <input
-            type="text"
-            placeholder="User name"
-            value={userName}
-            onChange={(event) => {
-              const value = event.target.value;
-              setUserName(value);
-            }}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(event) => {
-              const value = event.target.value;
-              setEmail(value);
-            }}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(event) => {
-              const value = event.target.value;
-              setPasword(value);
-            }}
-          />
+          <Input type="text" placeholder="User name" value={userName} setState={setUserName} />
+
+          <Input type="email" placeholder="Email" value={email} setState={setEmail} />
+
+          <Input type="password" placeholder="Password" value={password} setState={setPasword} />
+
           <div className="checkbox-container">
-            <input
-              type="checkbox"
-              placeholder=""
-              onChange={(event) => {
-                const value = event.target.checked;
-                setCheck(value);
-              }}
-            />
+            <Input type="checkbox" placeholder="checkbox" value={check} setState={setCheck} />
             <span>S'inscrire à notre newsletter</span>
           </div>
 
@@ -96,7 +77,7 @@ const Signup = ({ setToken }) => {
             En m'inscrivant je confirme avoir lu et accepté les Termes & Conditions et Politique de Confidentialité de Vinted. Je confirme avoir au moins 18
             ans.
           </p>
-          <input type="submit" className="submit" />
+          <input type="submit" className="submit" value="S'inscrire" />
 
           <Link to="/login">
             <p>Tu as déjà un compte ? Connecte-toi !</p>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Input from "../components/Input";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
@@ -19,8 +20,8 @@ const Login = ({ setToken }) => {
         password: password,
       };
 
-      // const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/login", user);
-      const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/login", user);
+      const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/login", user);
+      // const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/login", user);
 
       const token = response.data.token;
       if (token) {
@@ -29,12 +30,17 @@ const Login = ({ setToken }) => {
         navigate("/publish");
       }
     } catch (error) {
-      if (error.response.data.message === "User not found") {
+      console.log(error.response);
+      if (error.response.data.error === "Acount not found") {
         setUserMessage("Utilisateur inconnue");
       } else if (error.response.data.message === "Unauthorized") {
         setUserMessage("Votre email ou mot de passe incorect");
+      } else if (error.response.data.error === "password or email is not corect") {
+        setUserMessage("Votre email ou mot de passe incorect");
+      } else if (error.response.data.error === "All fields are required") {
+        setUserMessage("Veuillez remplir tous les champs");
       } else {
-        console.log(error.response.data.message);
+        console.log(error.response);
       }
     }
   };
@@ -53,24 +59,11 @@ const Login = ({ setToken }) => {
             submitHandler(event);
           }}
         >
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(event) => {
-              const value = event.target.value;
-              setEmail(value);
-            }}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(event) => {
-              const value = event.target.value;
-              setPasword(value);
-            }}
-          />
+          <Input type="email" placeholder="Email" value={email} setState={setEmail} />
 
-          <input type="submit" className="submit" />
+          <Input type="password" placeholder="Password" value={password} setState={setPasword} />
+
+          <input type="submit" className="submit" value="Se Connnecter" />
           <Link to="/signup">
             <span>Pas encore de compte ? Inscris-toi !</span>
           </Link>

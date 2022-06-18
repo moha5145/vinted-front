@@ -1,0 +1,233 @@
+.header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+
+  .container {
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f5f6f8;
+      padding: 10px 0;
+      .search-container {
+        background-color: #f5f6f7;
+        width: 50%;
+        height: 40px;
+        display: flex;
+        i {
+          line-height: 40px;
+          margin: 0 5px;
+          color: gray;
+        }
+        input {
+          width: 100%;
+          border: none;
+          background-color: none;
+          background-color: #f5f6f7;
+          outline: none;
+        }
+        input:hover {
+          opacity: 0.8;
+        }
+      }
+      .nav {
+        .logout {
+          background-color: #c2175b;
+          color: white !important;
+          border-style: none;
+        }
+        .logout:hover,
+        a:hover,
+        .vendre:hover {
+          opacity: 0.8;
+        }
+        a {
+          border: 1px solid #09aeb7;
+          color: #09aeb7 !important;
+          padding: 5px 10px;
+          border-radius: 5px;
+          height: 26px;
+        }
+        .vendre {
+          background-color: #09aeb7;
+          color: white !important;
+        }
+      }
+      .menu {
+        display: none;
+        cursor: pointer;
+        color: #09aeb7;
+        font-size: 25px;
+      }
+      .menu:hover {
+        opacity: 0.8;
+      }
+      .menu:hover {
+        opacity: 0.6;
+      }
+    }
+
+    .filters-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+
+      .left-filter {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+
+        .switch {
+          font-size: 40px;
+          color: #09aeb7;
+        }
+        .switch:hover {
+          opacity: 0.8;
+        }
+        .range {
+          flex: 3;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  img {
+    height: 50px;
+  }
+  nav a {
+    margin-right: 10px;
+  }
+  .hide-modal {
+    width: 100%;
+    height: 50vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    display: none;
+  }
+}
+@media (min-width: 1014px) {
+  .show-modal {
+    display: none;
+  }
+}
+@media (max-width: 1014px) {
+  .header {
+    .container {
+      .top-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #f5f6f8;
+        padding: 10px;
+        .search-container {
+          background-color: #f5f6f7;
+          width: 50%;
+          height: 40px;
+          display: flex;
+          i {
+            line-height: 40px;
+            margin: 0 5px;
+            color: gray;
+          }
+          input {
+            width: 100%;
+            border: none;
+            background-color: none;
+            background-color: #f5f6f7;
+            outline: none;
+          }
+          input:hover {
+            opacity: 0.8;
+          }
+        }
+        .nav {
+          display: none;
+        }
+        .menu {
+          display: inherit !important;
+        }
+      }
+
+      .filters-container {
+        display: none;
+      }
+    }
+  }
+
+  .show-modal {
+    min-width: 300px;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .cancel {
+      font-size: 30px;
+      padding: 20px;
+    }
+    .container {
+      .nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 10px;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .logout {
+            background-color: #c2175b;
+            color: white !important;
+            border-style: none;
+          }
+
+          .logout:hover,
+          a:hover,
+          .vendre:hover {
+            opacity: 0.8;
+          }
+          a {
+            flex: 1;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid #09aeb7;
+            color: #09aeb7 !important;
+            padding: 10px 20px;
+            // padding: 5px 10px;
+            border-radius: 5px;
+            height: 26px;
+          }
+          .vendre {
+            background-color: #09aeb7;
+            color: white !important;
+          }
+        }
+      }
+
+      .filter-container {
+        margin-top: 30px;
+        .filter {
+          // display: flex;
+          // flex-direction: column;
+
+          .range-container {
+            margin: 25px 0;
+            .title {
+            }
+            .range {
+              margin: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.switch-page {
+  button {
+    margin-right: 10px;
+    background-color: #09aeb7;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    i {
+      padding: 0 5px;
+    }
+  }
+  button:hover {
+    opacity: 0.8;
+  }
+
+  button:active {
+    opacity: 0.6;
+  }
+
+  span {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+}

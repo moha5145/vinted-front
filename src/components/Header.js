@@ -1,18 +1,18 @@
-import "../components/header.scss";
+import "../components/styles/header.scss";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import Cookies from "js-cookie";
-import Range from "./Range";
 
-const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setSort, switchPage, setSwitchPage, setLimit, data }) => {
+import Range from "./Range";
+import { useState } from "react";
+import Pagination from "./Pagination";
+import LimitParpage from "./LimitParPage";
+import FilterByPrice from "./FilterByPrice";
+import RightNav from "./RightNav";
+
+const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setSort, switchPage, setSwitchPage, setLimit, data, limit }) => {
   const location = useLocation();
-  const options = [
-    { label: "10", value: 10 },
-    { label: "15", value: 15 },
-    { label: "20", value: 20 },
-    { label: "25", value: 25 },
-    { label: "30", value: 30 },
-  ];
+  const [active, setActive] = useState(false);
+
   return (
     <section className="header">
       <div className="container">
@@ -30,53 +30,20 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
               }}
             />
           </div>
-          <nav className="nav">
-            {token && (
-              <div>
-                <Link
-                  className="logout"
-                  to="/login"
-                  onClick={() => {
-                    setToken(Cookies.remove("token"));
-                  }}
-                >
-                  se deconnecter
-                </Link>
-
-                <Link to="/publish" className="vendre">
-                  vends tes articles
-                </Link>
-              </div>
-            )}
-
-            {!token && (
-              <div>
-                <Link to="/login">se connecter</Link>
-
-                <Link to="/signup">s'inscrire</Link>
-
-                <Link to="/login" className="vendre">
-                  vends tes articles
-                </Link>
-              </div>
-            )}
-          </nav>
+          <RightNav token={token} setToken={setToken} setActive={setActive} />
+          <i
+            className="fa-solid fa-bars menu"
+            onClick={() => {
+              setActive(true);
+            }}
+          ></i>
         </div>
 
-        <div className="categorys">
-          <nav>
-            <Link to="/">Femme</Link>
-            <Link to="/">Homme</Link>
-            <Link to="/">Enfants</Link>
-            <Link to="/">Maison</Link>
-            <Link to="/">Divertissement</Link>
-            <Link to="/">Animaux</Link>
-            <Link to="/">A propos</Link>
-            <Link to="/">Notre platforme</Link>
-          </nav>
-          {location.pathname === "/" && (
-            <div className="filters-container">
+        {location.pathname === "/" && (
+          <div className="filters-container">
+            <div className="left-filter">
               <span>Trier par prix : </span>
+
               {sort === "price-desc" ? (
                 <i
                   className="fa-solid fa-toggle-off switch"
@@ -92,59 +59,40 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
                   }}
                 ></i>
               )}
-
               <span>Prix entre :</span>
               <div className="range">
                 <Range values={values} setValues={setValues} />
               </div>
+            </div>
+          </div>
+        )}
+      </div>
 
-              <div className="select-limit-container">
-                <span>Limit par page</span>
-                <select
-                  name="limit page"
-                  id="limit-page"
-                  onChange={(event) => {
-                    setLimit(event.target.value);
-                  }}
-                >
-                  {options.map((option, index) => {
-                    return (
-                      <option key={index} value={option.value}>
-                        {option.label}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+      <section className={active ? "show-modal" : "hide-modal"}>
+        <i
+          className="fa-solid fa-xmark cancel"
+          onClick={() => {
+            setActive(false);
+          }}
+        ></i>
 
-              <div className="switch-page">
-                {switchPage > 1 && (
-                  <button
-                    onClick={() => {
-                      setSwitchPage(switchPage - 1);
-                    }}
-                  >
-                    <i className="fa-solid fa-arrow-left "></i>
-                    Previous Page
-                  </button>
-                )}
-                <span>{switchPage}</span>
-                {data.count / switchPage > switchPage && (
-                  <button
-                    onClick={() => {
-                      console.log(data.count);
-                      setSwitchPage(switchPage + 1);
-                    }}
-                  >
-                    Next Page
-                    <i className="fa-solid fa-arrow-right "></i>
-                  </button>
-                )}
+        <div className="container">
+          {location.pathname === "/" && (
+            <div className="filter-container">
+              <div className="filter">
+                <FilterByPrice sort={sort} setSort={setSort} />
+                <div className="range-container">
+                  <span className="title">Prix entre :</span>
+                  <div className="range">
+                    <Range values={values} setValues={setValues} />
+                  </div>
+                </div>
               </div>
             </div>
           )}
+          <RightNav token={token} setToken={setToken} setActive={setActive} />
         </div>
-      </div>
+      </section>
     </section>
   );
 };

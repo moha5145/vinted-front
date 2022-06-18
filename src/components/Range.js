@@ -4,7 +4,7 @@ import { Range, getTrackBackground } from "react-range";
 
 const STEP = 5;
 const MIN = 0;
-const MAX = 500;
+const MAX = 300;
 
 const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
   const [fakeValue, setFakeValue] = useState(values);
@@ -32,7 +32,7 @@ const LabeledTwoThumbs = ({ rtl, values, setValues }) => {
               ...props.style,
               height: "36px",
               display: "flex",
-              width: "70%",
+              width: "100%",
             }}
           >
             <div

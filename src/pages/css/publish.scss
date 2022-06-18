@@ -58,6 +58,9 @@
             border-bottom: 1px solid #ebedee;
             outline: none;
           }
+          input:focus {
+            border-bottom-color: #0ab1ba;
+          }
         }
 
         .description {
@@ -72,6 +75,9 @@
             border: none;
             border-bottom: 1px solid #ebedee;
             outline: none;
+          }
+          textarea:focus {
+            border-bottom-color: #0ab1ba;
           }
         }
       }
@@ -99,6 +105,9 @@
             border-bottom: 1px solid #ebedee;
             outline: none;
           }
+          input:focus {
+            border-bottom-color: #0ab1ba;
+          }
         }
       }
 
@@ -121,6 +130,9 @@
             border: none;
             border-bottom: 1px solid #ebedee;
             outline: none;
+          }
+          input:focus {
+            border-bottom-color: #0ab1ba;
           }
           .checkbox-container {
             display: flex;

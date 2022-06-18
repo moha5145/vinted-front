@@ -10,8 +10,8 @@ const Offer = ({ token }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await axios.get(`https://vinted-clone-back.herokuapp.com/offer/${id}`);
-      const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offer/${id}`);
+      const response = await axios.get(`https://vinted-clone-back.herokuapp.com/offer/${id}`);
+      // const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offer/${id}`);
 
       console.log(response.data);
       setOffer(response.data);
@@ -27,17 +27,20 @@ const Offer = ({ token }) => {
       ) : (
         <div className="single-offer-container container">
           <div className="album-container">
-            <div className="col-img-container">{offer.product_image && <img src={offer.product_image.secure_url} alt="" />}</div>
-            <div className="row-img-container">
-              {offer.product_pictures &&
-                offer.product_pictures.map((img, index) => {
-                  return (
-                    <div key={index} className="offer " style={{ height: "300px" }}>
-                      <img src={img.url} alt="" />
-                    </div>
-                  );
-                })}
-            </div>
+            {offer.product_pictures ? (
+              <div className="row-img-container">
+                {offer.product_pictures &&
+                  offer.product_pictures.map((img, index) => {
+                    return (
+                      <div key={index} className="offer " style={{ height: "300px" }}>
+                        <img src={img.url} alt="" />
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              <div className="col-img-container">{offer.product_image && <img src={offer.product_image.secure_url} alt="" />}</div>
+            )}
           </div>
 
           <div className="detail-container">

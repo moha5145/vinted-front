@@ -1,0 +1,15 @@
+.par-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+  .switch {
+    font-size: 30px;
+    color: #09aeb7;
+    margin-right: 10px;
+  }
+  .switch:hover {
+    opacity: 0.8;
+  }
+}

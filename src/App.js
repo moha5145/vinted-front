@@ -2,6 +2,7 @@ import "./App.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
@@ -17,9 +18,10 @@ function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [searchInput, setSearchInput] = useState("");
   const [values, setValues] = useState([0, 250]); //range state
-  const [sort, setSort] = useState("price-desc");
-  const [switchPage, setSwitchPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [sort, setSort] = useState("price-desc"); //price sort
+  const [switchPage, setSwitchPage] = useState(1); //pagination
+  const [limit, setLimit] = useState(5); //limite par page
+  const [active, setActive] = useState(false); //modal
 
   useEffect(() => {
     try {
@@ -52,6 +54,8 @@ function App() {
           setLimit={setLimit}
           limit={limit}
           data={data}
+          active={active}
+          setActive={setActive}
         />
         <Routes>
           <Route
@@ -66,6 +70,8 @@ function App() {
                 switchPage={switchPage}
                 limit={limit}
                 setLimit={setLimit}
+                active={active}
+                setActive={setActive}
               />
             }
           ></Route>

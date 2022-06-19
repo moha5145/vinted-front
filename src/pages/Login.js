@@ -1,8 +1,10 @@
 import "../pages/css/login.scss";
 import axios from "axios";
+import Cookies from "js-cookie";
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+
 import Input from "../components/Input";
 
 const Login = ({ setToken }) => {
@@ -21,7 +23,6 @@ const Login = ({ setToken }) => {
       };
 
       const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/login", user);
-      // const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/login", user);
 
       const token = response.data.token;
       if (token) {

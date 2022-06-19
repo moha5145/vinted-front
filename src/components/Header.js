@@ -3,13 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 import Range from "./Range";
-import { useState } from "react";
 import FilterByPrice from "./FilterByPrice";
 import RightNav from "./RightNav";
 
-const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setSort, switchPage, setSwitchPage, setLimit, data, limit }) => {
+const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setSort, active, setActive }) => {
   const location = useLocation();
-  const [active, setActive] = useState(false);
 
   return (
     <section className="header">

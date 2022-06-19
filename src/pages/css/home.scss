@@ -35,19 +35,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // gap: 30px;
-    margin: 10px 0;
+    margin: 0px auto;
     h3 {
       color: #09b1ba;
-      margin-top: 20px;
     }
   }
   .offers {
-    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px;
 
     .offer {
       cursor: pointer;
@@ -55,17 +51,13 @@
       flex-direction: column;
       .offer-title {
         width: 280px;
-        height: 100px;
+        height: 60px;
         display: flex;
         align-items: center;
         gap: 15px;
-        .avatar {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-        }
+
         p {
-          font-size: 12px;
+          font-size: 13px;
           color: #c3c3c3;
         }
       }

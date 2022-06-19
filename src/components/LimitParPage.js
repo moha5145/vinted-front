@@ -10,7 +10,6 @@ const LimitParpage = ({ setLimit }) => {
   ];
   return (
     <div className="select-limit-container">
-      {/* <span>Limit par page</span> */}
       <select
         name="limit page"
         id="limit-page"

@@ -1,11 +1,18 @@
 import "../pages/css/home.scss";
 import { Link } from "react-router-dom";
+
 import hero from "../assets/jumbotron.jpg";
 import Pagination from "../components/Pagination";
 import LimitParpage from "../components/LimitParPage";
-const Home = ({ data, isLoading, token, setSwitchPage, switchPage, limit, setLimit }) => {
+
+const Home = ({ data, isLoading, token, setSwitchPage, switchPage, limit, setLimit, setActive }) => {
   return (
-    <section className="home">
+    <section
+      className="home"
+      onClick={() => {
+        setActive(false);
+      }}
+    >
       <div className="hero-container">
         <img src={hero} alt="" className="hero" />
         <div className="float-div container">

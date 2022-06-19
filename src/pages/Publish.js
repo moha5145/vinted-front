@@ -1,5 +1,6 @@
 import "./css/publish.scss";
 import axios from "axios";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +24,6 @@ const Publish = ({ token }) => {
       const formData = new FormData();
       formData.append("picture", picture);
 
-      console.log(formData);
       formData.append("title", title);
       formData.append("description", description);
       formData.append("brand", brand);
@@ -41,12 +41,6 @@ const Publish = ({ token }) => {
         },
       });
 
-      // const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData, {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      // });
       navigate(`/offer/${response.data._id}`);
     } catch (error) {
       console.log(error.response);

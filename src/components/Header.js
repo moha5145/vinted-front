@@ -38,23 +38,7 @@ const Header = ({ token, setToken, setSearchInput, values, setValues, sort, setS
         {location.pathname === "/" && (
           <div className="filters-container">
             <div className="left-filter">
-              <span>Trier par prix : </span>
-
-              {sort === "price-desc" ? (
-                <i
-                  className="fa-solid fa-toggle-off switch"
-                  onClick={() => {
-                    setSort("price-asc");
-                  }}
-                ></i>
-              ) : (
-                <i
-                  className="fa-solid fa-toggle-on switch"
-                  onClick={() => {
-                    setSort("price-desc");
-                  }}
-                ></i>
-              )}
+              <FilterByPrice sort={sort} setSort={setSort} />
               <span>Prix entre :</span>
               <div className="range">
                 <Range values={values} setValues={setValues} />

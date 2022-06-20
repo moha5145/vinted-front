@@ -16,32 +16,36 @@ const Publish = ({ token }) => {
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
   const [preview, setPreview] = useState();
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
-      const formData = new FormData();
-      formData.append("picture", picture);
+      if (title && price) {
+        const formData = new FormData();
+        formData.append("picture", picture);
 
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("brand", brand);
-      formData.append("size", size);
-      formData.append("color", color);
-      formData.append("condition", condition);
-      formData.append("city", city);
-      formData.append("price", price);
-      formData.append("price", price);
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("brand", brand);
+        formData.append("size", size);
+        formData.append("color", color);
+        formData.append("condition", condition);
+        formData.append("city", city);
+        formData.append("price", price);
 
-      const response = await axios.post("https://vinted-clone-back.herokuapp.com/offer/publish", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+        const response = await axios.post("https://vinted-clone-back.herokuapp.com/offer/publish", formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
-      navigate(`/offer/${response.data._id}`);
+        navigate(`/offer/${response.data._id}`);
+      } else {
+        setMessage("Le titre et le prix sont obligatoires");
+      }
     } catch (error) {
       console.log(error.response);
     }
@@ -190,7 +194,7 @@ const Publish = ({ token }) => {
               </div>
             </div>
           </section>
-
+          <p style={{ color: "red" }}>{message}</p>
           <div className="submit-container">
             <input type="submit" className="submit-btn" value="Ajouter" />
           </div>

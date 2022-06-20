@@ -83,6 +83,13 @@
           color: white;
           margin-top: 20px;
           height: 50px;
+          cursor: pointer;
+        }
+        .buy-btn:hover {
+          opacity: 0.8;
+        }
+        .buy-btn:active {
+          opacity: 0.8;
         }
       }
     }

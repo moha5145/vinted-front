@@ -156,6 +156,13 @@
           padding: 12px;
           font-size: 16px;
           margin: 60px 0;
+          cursor: pointer;
+        }
+        .submit-btn:hover {
+          opacity: 0.8;
+        }
+        .submit-btn:active {
+          opacity: 0.6;
         }
       }
     }

@@ -45,7 +45,16 @@ const CheckoutForm = ({ total, title }) => {
           <button
             type="submit"
             value="Pay"
-            style={{ width: "100%", height: "44px", backgroundColor: "#00BB6A", color: "white", border: "none", borderRadius: "5px", margin: "10px 0" }}
+            style={{
+              width: "100%",
+              height: "44px",
+              backgroundColor: "#09aeb7",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              margin: "10px 0",
+              cursor: "pointer",
+            }}
           >
             Valider
           </button>

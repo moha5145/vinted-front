@@ -73,7 +73,7 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
-      gap: 20px;
+      // gap: 20px;
 
       .left-filter {
         flex: 1;
@@ -83,7 +83,7 @@
         gap: 30px;
 
         .switch {
-          font-size: 40px;
+          font-size: 30px;
           color: #09aeb7;
         }
         .switch:hover {

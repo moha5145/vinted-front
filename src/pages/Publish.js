@@ -35,7 +35,7 @@ const Publish = ({ token }) => {
         formData.append("city", city);
         formData.append("price", price);
 
-        const response = await axios.post("https://vinted-clone-back.herokuapp.com/offer/publish", formData, {
+        const response = await axios.post("https://vinted-back-clone.onrender.com/offer/publish", formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",

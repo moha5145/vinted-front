@@ -22,7 +22,7 @@ const Login = ({ setToken }) => {
         password: password,
       };
 
-      const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/login", user);
+      const response = await axios.post("https://vinted-back-clone.onrender.com/user/login", user);
 
       const token = response.data.token;
       if (token) {

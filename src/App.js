@@ -28,7 +28,7 @@ function App() {
       const fetchData = async () => {
         const response = await axios.get(
           // `http://localhost:4000/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}&limit=${limit}&page=${switchPage}`
-          `https://vinted-clone-back.herokuapp.com/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}&limit=${limit}&page=${switchPage}`
+          `https://vinted-back-clone.onrender.com/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}&limit=${limit}&page=${switchPage}`
         );
         setData(response.data);
         setIsloading(false);

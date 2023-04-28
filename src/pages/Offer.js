@@ -10,7 +10,7 @@ const Offer = ({ token }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`https://vinted-clone-back.herokuapp.com/offer/${id}`);
+      const response = await axios.get(`https://vinted-back-clone.onrender.com/offer/${id}`);
 
       console.log(response.data);
       setOffer(response.data);

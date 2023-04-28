@@ -27,8 +27,8 @@ const Signup = ({ setToken }) => {
       };
 
       // const response = await axios.post("http://localhost:4000/user/signup", user);
-      // const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/user/signup", user);
-      const response = await axios.post("https://vinted-clone-back.herokuapp.com/user/signup", user);
+      // const response = await axios.post("https://vinted-back-clone.onrender.com/user/signup", user);
+      const response = await axios.post("https://vinted-back-clone.onrender.com/user/signup", user);
 
       const token = response.data.token;
       if (token) {

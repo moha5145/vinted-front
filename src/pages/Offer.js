@@ -18,7 +18,7 @@ const Offer = ({ token, apiUrl }) => {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, apiUrl]);
   return (
     <section className="offer-section">
       {isLoading ? (

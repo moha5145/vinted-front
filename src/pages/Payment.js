@@ -6,7 +6,7 @@ import CheckoutForm from "../components/CheckoutForm";
 
 const stripePromise = loadStripe("pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP");
 
-const Payment = () => {
+const Payment = ({apiUrl}) => {
   const location = useLocation();
   const { title, price } = location.state;
   const shiping = 0.8;
@@ -50,7 +50,7 @@ const Payment = () => {
 
         <div className="card-container">
           <Elements stripe={stripePromise}>
-            <CheckoutForm total={total} title={title} />
+            <CheckoutForm total={total} title={title} apiUrl={apiUrl} />
           </Elements>
         </div>
       </div>

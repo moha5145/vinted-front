@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Input from "../components/Input";
 
-const Signup = ({ setToken }) => {
+const Signup = ({ setToken, apiUrl }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
@@ -26,9 +26,7 @@ const Signup = ({ setToken }) => {
         check: check,
       };
 
-      // const response = await axios.post("http://localhost:4000/user/signup", user);
-      // const response = await axios.post("https://vinted-back-clone.onrender.com/user/signup", user);
-      const response = await axios.post("https://vinted-back-clone.onrender.com/user/signup", user);
+      const response = await axios.post(`${apiUrl}/user/signup`, user);
 
       const token = response.data.token;
       if (token) {

@@ -3,14 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const Offer = ({ token }) => {
+const Offer = ({ token, apiUrl }) => {
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`https://vinted-back-clone.onrender.com/offer/${id}`);
+      const response = await axios.get(`${apiUrl}/offer/${id}`);
 
       console.log(response.data);
       setOffer(response.data);

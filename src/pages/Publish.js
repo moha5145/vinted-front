@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Publish = ({ token }) => {
+const Publish = ({ token, apiUrl }) => {
   const [picture, setPicture] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -35,7 +35,7 @@ const Publish = ({ token }) => {
         formData.append("city", city);
         formData.append("price", price);
 
-        const response = await axios.post("https://vinted-back-clone.onrender.com/offer/publish", formData, {
+        const response = await axios.post(`${apiUrl}/offer/publish`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",

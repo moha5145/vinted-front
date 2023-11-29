@@ -12,6 +12,9 @@ import Cookies from "js-cookie";
 import Publish from "./pages/Publish";
 import Payment from "./pages/Payment";
 
+const apiUrl = "https://vinted-rcsanx0i.b4a.run";
+// const apiUrl = "http://localhost:4000"
+
 function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsloading] = useState(true);
@@ -27,8 +30,7 @@ function App() {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          // `http://localhost:4000/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}&limit=${limit}&page=${switchPage}`
-          `https://vinted-back-clone.onrender.com/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}&limit=${limit}&page=${switchPage}`
+          `${apiUrl}/offers?title=${searchInput}&priceMin=${values[0]}&priceMax=${values[1]}&sort=${sort}&limit=${limit}&page=${switchPage}`
         );
         setData(response.data);
         setIsloading(false);
@@ -75,11 +77,11 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/offer/:id" element={<Offer token={token} />}></Route>
-          <Route path="/signup" element={<Signup setToken={setToken} />}></Route>
-          <Route path="/login" element={<Login setToken={setToken} />}></Route>
-          <Route path="/publish" element={<Publish token={token} />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/offer/:id" element={<Offer token={token} apiUrl={apiUrl} />}></Route>
+          <Route path="/signup" element={<Signup setToken={setToken} apiUrl={apiUrl} />}></Route>
+          <Route path="/login" element={<Login setToken={setToken} apiUrl={apiUrl} />}></Route>
+          <Route path="/publish" element={<Publish token={token} apiUrl={apiUrl} />} />
+          <Route path="/payment" element={<Payment apiUrl={apiUrl}/>} />
         </Routes>
       </Router>
     </div>

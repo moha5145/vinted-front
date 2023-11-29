@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Input from "../components/Input";
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, apiUrl }) => {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const [errorMessage, setUserMessage] = useState("");
@@ -22,7 +22,7 @@ const Login = ({ setToken }) => {
         password: password,
       };
 
-      const response = await axios.post("https://vinted-back-clone.onrender.com/user/login", user);
+      const response = await axios.post(`${apiUrl}/user/login`, user);
 
       const token = response.data.token;
       if (token) {
